@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=12",
+    "npm": ">=5"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "fabric-chaincode-node start"
   },
   "repository": {
     "type": "git",
@@ -17,7 +22,7 @@
   },
   "homepage": "https://github.com/kirillRomanenko/progress-chaincode#readme",
   "dependencies": {
-    "fabric-contract-api": "^2.2.1",
-    "fabric-shim": "^2.2.1"
+    "fabric-contract-api": "^2.0.0",
+    "fabric-shim": "^2.0.0"
   }
 }
