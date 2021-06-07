@@ -17,6 +17,7 @@ class AcademicPerformance extends Contract {
                 SurnameTeacher: 'Иванов',
                 NameTeacher: 'Иван',
                 PatronymicTeacher: 'Иванович',
+                HashFile: 'TbxRJ32PTIqBxdi9H8YUWDPd/in/hgZLlKLGP4A1YGc=',
             },
             {
                 ID: 'asset2',
@@ -31,6 +32,7 @@ class AcademicPerformance extends Contract {
                 SurnameTeacher: 'Иванов',
                 NameTeacher: 'Иван',
                 PatronymicTeacher: 'Иванович',
+                HashFile: 'dQiXu9HWde+zobdXjMzyxpOPICnYHCTQvGeAcC5D+sQ=',
             },
             {
                 ID: 'asset3',
@@ -45,6 +47,7 @@ class AcademicPerformance extends Contract {
                 SurnameTeacher: 'Иванов',
                 NameTeacher: 'Иван',
                 PatronymicTeacher: 'Иванович',
+                HashFile: 'HdVKMzMuggNah15NwpGTK8EK3g6U6SjKNUlrAypmnLk=',
             },
         ];
 
@@ -77,7 +80,7 @@ class AcademicPerformance extends Contract {
     }
     // new asset 
     async CreateAsset(ctx, id, date, numberOfGroup, surnameStudent, nameStudent, 
-        patronymicStudent, educationalSubject, typeOfWork, numberOfPoints, surnameTeacher, nameTeacher, patronymicTeacher) {
+        patronymicStudent, educationalSubject, typeOfWork, numberOfPoints, surnameTeacher, nameTeacher, patronymicTeacher, hashFile) {
         const asset = {
             ID: id,
             Date: date,
@@ -91,6 +94,7 @@ class AcademicPerformance extends Contract {
             SurnameTeacher: surnameTeacher,
             NameTeacher: nameTeacher,
             PatronymicTeacher: patronymicTeacher,
+            HashFile: hashFile,
         };
         await ctx.stub.putState(id, Buffer.from(JSON.stringify(asset)));
         return JSON.stringify(asset);
@@ -105,7 +109,7 @@ class AcademicPerformance extends Contract {
     }
     // updates asset 
     async UpdateAsset(ctx, id, date, numberOfGroup, surnameStudent, nameStudent, 
-        patronymicStudent, educationalSubject, typeOfWork, numberOfPoints, surnameTeacher, nameTeacher, patronymicTeacher) {
+        patronymicStudent, educationalSubject, typeOfWork, numberOfPoints, surnameTeacher, nameTeacher, patronymicTeacher, hashFile) {
         const exists = await this.AssetExists(ctx, id);
         if (!exists) {
             throw new Error(`The asset ${id} does not exist`);
@@ -125,6 +129,7 @@ class AcademicPerformance extends Contract {
             SurnameTeacher: surnameTeacher,
             NameTeacher: nameTeacher,
             PatronymicTeacher: patronymicTeacher,
+            HashFile: hashFile,
         };
         return ctx.stub.putState(id, Buffer.from(JSON.stringify(updatedAsset)));
     }
